@@ -14,11 +14,24 @@ class App extends React.Component{
 
     componentDidMount(){
         const {params} = this.props.match;
+
+        const localStorageRef = localStorage.getItem(params.restaurantId)
+        if(localStorageRef){
+            this.setState({order: JSON.parse(localStorageRef)})
+        }
+ 
+
         this.ref = base.syncState(`${params.restaurantId}/burgers`,{
             context: this,
             state: 'burgers'
         })
     }
+
+    componentDidUpdate(){
+        const {params} = this.props.match;
+        localStorage.setItem(params.restaurantId,JSON.stringify(this.state.order))
+    }
+
     componentWillUnmount() {
         base.removeBinding(this.ref);
     }
