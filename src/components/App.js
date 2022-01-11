@@ -47,6 +47,15 @@ class App extends React.Component{
         this.setState({burgers})
     }
 
+    updateBurger = (key, updatedBurger) =>{
+        // делаем копию стейта
+        const burgers = {...this.state.burgers}
+        // обновляем нужный бургер
+        burgers[key] = updatedBurger;
+        // записать наш новый объект бургерс в стэйт
+        this.setState({burgers})
+    }
+
     loadSampleBurgers = () =>{
         this.setState({burgers:sampleBurgers})
     }
@@ -77,7 +86,9 @@ class App extends React.Component{
                     </ul>
                 </div>
                 <Order burgers = {this.state.burgers} order ={this.state.order} />
-                <MenuAdmin loadSampleBurgers = {this.loadSampleBurgers} addBurger = {this.addBurger}/>
+                <MenuAdmin loadSampleBurgers = {this.loadSampleBurgers} addBurger = {this.addBurger}
+                burgers = {this.state.burgers}
+                updateBurger = {this.updateBurger}/>
             </div>
         );
     }
