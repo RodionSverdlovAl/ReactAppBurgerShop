@@ -11,14 +11,16 @@ class Order extends React.Component{
             return <li className='unavailable' key={key}>
                 Извините, {burger ? burger.name : 'бургер'} временно недоступен </li>
         }
-        return <li key={key}>
+        return (
+            <li key={key}>
             <span>
                 <span>{count}</span>
                 шт. {burger.name}
                 <span> {count * burger.price}₽</span>
-                <button className='cancellItem'>&times;</button>
+                <button className='cancellItem'onClick= {()=>this.props.deleteFromOrder(key)}>&times;</button>
             </span>
             </li>
+        );
     }
 
     render(){

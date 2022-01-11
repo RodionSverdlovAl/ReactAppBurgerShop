@@ -21,6 +21,7 @@ class EditBurgerForm extends React.Component{
                 </select>
                 <textarea onChange={this.handleChange} name='desc' value={this.props.burger.desc}/>
                 <input onChange={this.handleChange} name='image' type = 'text' value={this.props.burger.image}/>
+                <button onClick={()=>this.props.deleteBurger(this.props.index)}>Удалить из меню</button>
             </div>
         )
     }
