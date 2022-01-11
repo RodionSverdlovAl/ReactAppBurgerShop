@@ -7,7 +7,7 @@ import Burger from './Burger';
 
 class App extends React.Component{
     state = {
-        burger: {},
+        burgers: {},
         order: {}
     }
 
@@ -23,7 +23,16 @@ class App extends React.Component{
     }
 
     loadSampleBurgers = () =>{
-        this.setState({burger:sampleBurgers})
+        this.setState({burgers:sampleBurgers})
+    }
+
+    addToOrder = (key) =>{
+        // копия обекта стэйт
+        const order = {...this.state.order}
+        // добавляем ключ к заказу со значением 1 или обновляем текущее значение
+        order[key] = order[key] + 1 || 1;
+        // записывае обновленное значение ордер в стэйт
+        this.setState({order}) 
     }
 
     render(){
@@ -32,11 +41,12 @@ class App extends React.Component{
                 <div className='menu'>
                     <Header title ="Hot Burger" />
                     <ul className='burgers'>
-                        {Object.keys(this.state.burger).map(key =>{
+                        {Object.keys(this.state.burgers).map(key =>{
                             return <Burger 
                             key={key}
                             index= {key}
-                            details ={this.state.burger[key]}
+                            addToOrder = {this.addToOrder}
+                            details ={this.state.burgers[key]}
                             />
                         })}
                     </ul>
