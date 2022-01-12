@@ -5,7 +5,9 @@ import MenuAdmin from './MenuAdmin';
 import sampleBurgers from '../sample-burgers';
 import Burger from './Burger';
 import base from '../base';
+import firebase from 'firebase/app';
 import PropTypes from 'prop-types';
+import SignIn from './Auth/SignIn';
 
 class App extends React.Component{
 
@@ -92,10 +94,16 @@ class App extends React.Component{
         order[key] = order[key] + 1 || 1;
         // записывае обновленное значение ордер в стэйт
         this.setState({order}) 
+    };
+
+    handleLogout = async() =>{
+        await firebase.auth().signOut();
+        window.location.reload();
     }
 
     render(){
         return(
+            <SignIn>
             <div className='burger-paradise'>
                 <div className='menu'>
                     <Header title ="Hot Burger" />
@@ -115,8 +123,10 @@ class App extends React.Component{
                 <MenuAdmin loadSampleBurgers = {this.loadSampleBurgers} addBurger = {this.addBurger}
                 burgers = {this.state.burgers}
                 updateBurger = {this.updateBurger}
-                deleteBurger = {this.deleteBurger}/>
+                deleteBurger = {this.deleteBurger}
+                handleLogout = {this.handleLogout} />
             </div>
+            </SignIn>
         );
     }
 }
