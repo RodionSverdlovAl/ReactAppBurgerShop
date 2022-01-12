@@ -1,6 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Shipment from './Shipment';
+import {TransitionGroup, CSSTransition} from 'react-transition-group';
+
 class Order extends React.Component{
+
+    static propTypes = {
+        burgers: PropTypes.object,
+        order: PropTypes.object,
+        deleteFromOrder: PropTypes.func
+    }
 
     renderOrder = (key) =>{
         const burger = this.props.burgers[key];
@@ -8,10 +17,15 @@ class Order extends React.Component{
         const isAvailable = burger && burger.status === 'available';
         if(!burger) return null;
         if(!isAvailable){
-            return <li className='unavailable' key={key}>
-                Извините, {burger ? burger.name : 'бургер'} временно недоступен </li>
+            return (
+                <CSSTransition classNames = 'order' key = {key} timeout = {{enter:5000, exit:5000}}>
+                    <li className='unavailable' key={key}>
+                    Извините, {burger ? burger.name : 'бургер'} временно недоступен </li>
+                </CSSTransition>
+            )
         }
         return (
+            <CSSTransition classNames = 'order' key = {key} timeout = {{enter:5000, exit:5000}}>
             <li key={key}>
             <span>
                 <span>{count}</span>
@@ -20,6 +34,7 @@ class Order extends React.Component{
                 <button className='cancellItem'onClick= {()=>this.props.deleteFromOrder(key)}>&times;</button>
             </span>
             </li>
+            </CSSTransition>
         );
     }
 
@@ -39,8 +54,9 @@ class Order extends React.Component{
         return(
             <div className='order-wrap'>
                 <h2>Ваш заказ</h2>
-                <ul className='order'>{orderIds.map(this.renderOrder)}
-                </ul>
+                <TransitionGroup component = 'ul' className='order'>
+                    {orderIds.map(this.renderOrder)}
+                </TransitionGroup>
                 
                 {total >0 ? (
                     <Shipment total ={total} />
