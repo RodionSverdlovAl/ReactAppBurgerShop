@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/ReactAppBurgerShop/static/css/main.d3871a48.chunk.css",
+    "main.js": "/ReactAppBurgerShop/static/js/main.5fd63ae0.chunk.js",
+    "main.js.map": "/ReactAppBurgerShop/static/js/main.5fd63ae0.chunk.js.map",
+    "runtime-main.js": "/ReactAppBurgerShop/static/js/runtime-main.7e5f8db0.js",
+    "runtime-main.js.map": "/ReactAppBurgerShop/static/js/runtime-main.7e5f8db0.js.map",
+    "static/js/2.ba417a70.chunk.js": "/ReactAppBurgerShop/static/js/2.ba417a70.chunk.js",
+    "static/js/2.ba417a70.chunk.js.map": "/ReactAppBurgerShop/static/js/2.ba417a70.chunk.js.map",
+    "index.html": "/ReactAppBurgerShop/index.html",
+    "precache-manifest.09a2f62fd85088a617a93592ae604050.js": "/ReactAppBurgerShop/precache-manifest.09a2f62fd85088a617a93592ae604050.js",
+    "service-worker.js": "/ReactAppBurgerShop/service-worker.js",
+    "static/css/main.d3871a48.chunk.css.map": "/ReactAppBurgerShop/static/css/main.d3871a48.chunk.css.map",
+    "static/media/style.css": "/ReactAppBurgerShop/static/media/up.551b5c6b.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7e5f8db0.js",
+    "static/js/2.ba417a70.chunk.js",
+    "static/css/main.d3871a48.chunk.css",
+    "static/js/main.5fd63ae0.chunk.js"
+  ]
+}
